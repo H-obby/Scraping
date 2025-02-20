@@ -19,6 +19,9 @@
   },
   "dependencies": {
     "axios": "^1.7.9",
-    "cheerio": "^1.0.0"
+    "cheerio": "^1.0.0",
+    "csv": "^6.3.11",
+    "csv-writer": "^1.6.0",
+    "export-to-csv": "^1.4.0"
   }
 }
