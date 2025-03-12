@@ -1,6 +1,6 @@
 {
-    "dons": {
-        "Abjurateur d’armure": {
+    "dons": [
+        {
             "avantage": "Les sorts d'abjuration lancés par le personnage qui confère un bonus à la CA confère un bonus supplémentaire de +1 à la CA.",
             "condition": "[École renforcée (Abjuration) <<https://gemmaline.com/dons/dons-ecole-renforcee-32.htm#32>>]",
             "courte_description": "Le personnage sait conférer une protection meilleure qu'à la normale.",
@@ -10,7 +10,7 @@
             "type": "[Général]",
             "url": "https://gemmaline.com/dons/dons-abjurateur-d-armure-1270.htm"
         },
-        "Absorption de familier": {
+        {
             "avantage": "Le familier devient partie intégrante du personnage. Le bonus conféré par son familier double (par exemple, un familier crapaud confère désormais 6 pv et un familier rat un bonus de +4 aux jets de Vigueur). De plus, le personnage devient capable de communiquer avec les créatures du même type que son familier. Enfin, il acquiert le don Vigilance (mais ne peut l'utiliser comme prérequis à d'autres dons ou classe de prestige).\nLe personnage ne perd pas d'XP pour avoir absorber son familier, celui-ci n'étant pas techniquement mort. Cela l'empêche aussi d’appeler un nouveau familier. le personnage ne gagne aucun autre avantage normalement dérivé d'un familier.\nSi le personnage meurt, le familier meurt en même temps. Il subit alors les effets de la mort de son familier s'il est ressuscité.\nL'ensemble des pouvoirs conférés par ce don sont des pouvoirs surnaturels.",
             "condition": "[Aptitude de classe de Appel de familier <<https://gemmaline.com/aptitude-5.htm>>]",
             "courte_description": "Le personnage absorbe le familier dans son corps, gagnant ses pouvoirs",
@@ -20,7 +20,7 @@
             "type": "[Général]",
             "url": "https://gemmaline.com/dons/dons-absorption-de-familier-2311.htm"
         },
-        "Absorption magique": {
+        {
             "avantage": "Lorsqu'un sort ne peut passer outre la résistance à la magie du personnage (qu'elle soit naturelle ou due à un sort ou à un effet), celui-ci est absorbé comme par l'aptitude d'absorption de sorts. Si le sort ne peut être absorbé à cause de la limite de sorts ou le niveau du sort, la résistance à la magie s'applique normalement.",
             "condition": "[Aptitude de classe de Vol de sorts <<https://gemmaline.com/aptitude-149.htm>>, Aptitude de classe de Absorption de sorts <<https://gemmaline.com/aptitude-157.htm>>]",
             "courte_description": "Le personnage peut utiliser sa résistance à la magie pour absorber les sorts",
@@ -30,7 +30,7 @@
             "type": "[Général]",
             "url": "https://gemmaline.com/dons/dons-absorption-magique-1341.htm"
         },
-        "Accord d’arme magique": {
+        {
             "avantage": "Quand il manie une arme magique, le personnage bénéficie d'un bonus d'intuition de +1 aux jets d'attaque et de dégâts.",
             "condition": "[Création d’armes et armures magiques <<https://gemmaline.com/dons/dons-creation-d-armes-et-armures-magiques-22.htm#22>>, Niveau 5 de lanceur de sorts]",
             "courte_description": "Grâce à son étude poussée des armes magiques, le personnage sait tirer avantage de tous leurs secrets.",
@@ -40,7 +40,7 @@
             "type": "[Général]",
             "url": "https://gemmaline.com/dons/dons-accord-d-arme-magique-1114.htm"
         },
-        "Acrobate agile": {
+        {
             "avantage": "Le personnage peut enchaîner les acrobaties à sa vitesse de déplacement normal en ne subissant qu'un malus de -5 à ses tests d'Acrobaties.",
             "condition": "[Degré de maîtrise de 5 en Acrobaties]",
             "courte_description": "Le personnage est doué pour enchaîner les acrobaties sans ralentir",
@@ -50,8 +50,5 @@
             "type": "[Général, Athlète]",
             "url": "https://gemmaline.com/dons/dons-acrobate-agile-2254.htm"
         }
-    },
-    "sorts": {
-
-    }
+    ]
 }

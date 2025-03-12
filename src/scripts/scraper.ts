@@ -1,17 +1,21 @@
-import * as axios from 'axios';
+import axios from 'axios';
 import * as cheerio from 'cheerio';
 import { promises } from 'dns';
 import { readFile, readFileSync, writeFile } from 'fs';
-import * as csvWriter from 'csv-writer';
 import * as path from 'path';
 
-class feats_scrap{
+export default class FeatsScrap{
+  constructor() {
+    type Feats = {
+
+    }
+  }
     
-  public delay(ms: number) {
+  private delay(ms: number) {
     return new Promise( resolve => setTimeout(resolve, ms) );
   }
 
-  public async fetch_html(url: string): Promise<string> {
+  private async fetch_html(url: string): Promise<string> {
     try {
       const response = await axios.get<string>(url);
       return response.data;
@@ -33,7 +37,7 @@ class feats_scrap{
       let feats_data = {};
 
       const index = 0;
-      const number = 5
+      const number = 5;
 
       for(var url of feats_url){
         await this.fetch_html('https://gemmaline.com/dons'+url).then(html => {
