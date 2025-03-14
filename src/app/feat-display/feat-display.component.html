@@ -1,0 +1,6 @@
+<main>
+    <button class="primary" type="button" (click)="handleButtonClick()">Scrap gemmaline for feats</button>
+    <p *ngFor="let truc of data">
+        <app-feat-small [feat]="truc"></app-feat-small>
+    </p>
+  </main>
