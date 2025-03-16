@@ -1,5 +1,7 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, inject } from '@angular/core';
 import { Feat } from '../interfaces';
+import { ActivatedRoute } from '@angular/router';
+import { HttpAccessService } from '../http-access.service';
 
 @Component({
   selector: 'app-feat-details',
@@ -8,6 +10,15 @@ import { Feat } from '../interfaces';
   styleUrl: './feat-details.component.css'
 })
 export class FeatDetailsComponent {
-  @Input() feat!: Feat
+  route: ActivatedRoute = inject(ActivatedRoute);
+  httpAccessService = inject(HttpAccessService);
+  feat: Feat | undefined;
 
+  constructor(){
+    const feat_id = this.route.snapshot.params['id'];
+    console.log()
+    this.httpAccessService.getFeatById(feat_id).then((feat) => {
+      this.feat = feat;
+    });
+  }
 }

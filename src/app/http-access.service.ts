@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { Subscription } from 'rxjs';
+import { Feat } from './interfaces';
 
 @Injectable({
   providedIn: 'root'
@@ -15,17 +16,14 @@ export class HttpAccessService {
     return this.http.get(url);
   }
 
-  getFeats(){
-    this.subscription = this.fetchData("http://localhost:3000/dons").subscribe({
-      next: (data) => {
-        return data;
-      },
-      error: (error) => {
-        console.error('Error fetching data:', error);
-      },
-      complete: () => {
-        console.log('Data fetching completed');
-      }
-    });
+  async getFeats(): Promise<Feat[]>{
+    const data = await fetch("http://localhost:3000/dons");
+    return (await data.json()) ?? [];
+  }
+
+  async getFeatById(id: number): Promise<Feat>{
+    console.log(`id (in HttpAccessService) = ${id}`);
+    const data = await fetch(`http://localhost:3000/dons/${id}`);
+    return (await data.json()) ?? [];
   }
 }
