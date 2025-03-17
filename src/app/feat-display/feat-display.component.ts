@@ -4,6 +4,7 @@ import { HttpAccessService } from "./../http-access.service";
 import { Subscription } from "rxjs";
 import { Feat } from '../interfaces';
 import { FeatSmallComponent } from '../feat-small/feat-small.component';
+import { FeatsScrap } from '../../scripts/feats-scrap';
 
 @Component({
   selector: 'app-feat-display',
@@ -12,18 +13,23 @@ import { FeatSmallComponent } from '../feat-small/feat-small.component';
   styleUrl: './feat-display.component.css'
 })
 export class FeatDisplayComponent {
-  constructor(private httpAccessService: HttpAccessService) { };
-  db_url = 'http://localhost:3000/';
-  title = "truc";
-  state = "idle";
-  data: Feat[] = [];
-  subscription!: Subscription;
-    
-  async handleButtonClick() {
+  data: Feat[]
+  constructor(private httpAccessService: HttpAccessService) {
+    this.data = []
+  };
+  title = "feat_display";
+  
+  async handleSearchClick() {
     try {
       this.data =  await this.httpAccessService.getFeats();
     } catch (error) {
       console.error('Error:', error);
     };
   };
+  
+  async handleScrapClick(){
+    await this.httpAccessService.writeFeats(await new FeatsScrap().get_all_feats())
+
+    console.log("Feats scraped and written in db.json")
+  }
 }

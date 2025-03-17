@@ -1,11 +1,12 @@
 export interface Feat {
-    id: number,
+    id?: any,
     nom: string,
-    type: string,
+    type?: string,
     courte_description: string,
-    source: string,
-    condition: string,
+    source?: string,
+    condition?: string[],
+    condition_url?: string[],
     avantage: string,
-    normal: string,
+    normal?: string,
     url: string,
 }

@@ -26,4 +26,8 @@ export class HttpAccessService {
     const data = await fetch(`http://localhost:3000/dons/${id}`);
     return (await data.json()) ?? [];
   }
+
+  async writeFeats(data: Feat[]){
+    return this.http.post<Feat[]>("http://localhost:3000/dons", data)
+  }
 }
