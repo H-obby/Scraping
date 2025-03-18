@@ -1,7 +1,6 @@
 import axios from 'axios';
 import * as cheerio from 'cheerio';
 import { Feat } from '../app/interfaces';
-import puppeteer from 'puppeteer'
 
 export class FeatsScrap{
   constructor() {}
@@ -10,30 +9,11 @@ export class FeatsScrap{
     return new Promise( resolve => setTimeout(resolve, ms) );
   }
 
-  public async fetch_html(url: string): Promise<string> {
-    try {
-      console.log(`before launch`)
-      const browser = await puppeteer.launch();
-      console.log(`before newpage`)
-      const page = await browser.newPage();
-      console.log(`before goto(${url})`)
-      await page.goto(url);
-      console.log(`before content`)
-      let html = await page.content();
-      console.log(`hml = ${html}`)
-
-      await browser.close();
-
-      return html;
-    } catch (error) {
-      // handle error
-      console.log(error);
-      return '';
-    }
+  public fetch_html(url: string): Promise<string> {
+    return new Promise(()=>url)
   }
   
   public async get_all_feats(): Promise<Feat[]>{
-    console.log(`very start of get_all_feats`)
     return await this.fetch_html('https://gemmaline.com/dons/description.php').then(async html => {
       const $ = cheerio.load(html);
       
@@ -45,9 +25,13 @@ export class FeatsScrap{
       
       const index = 0;
       const number = 5; //feats_url.length
+
+      console.log(`yipee ${feats_url.slice(0, 5)}`)
       
       for(var url of feats_url.slice(index, number)){
         await this.fetch_html('https://gemmaline.com/dons'+url).then(html => {
+          console.log(`'feat ${url} fetched`)
+
           const $ = cheerio.load(html);
           let nom = $('body h1').clone().children().remove().end().text().trim();
           let type = $('body h1 em').text();
