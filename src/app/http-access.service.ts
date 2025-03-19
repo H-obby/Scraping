@@ -27,7 +27,7 @@ export class HttpAccessService {
     return (await data.json()) ?? [];
   }
 
-  async writeFeats(data: Feat[]){
+  writeFeats(data: Feat[]): Observable<Feat[]> {
     return this.http.post<Feat[]>("http://localhost:3000/dons", data)
   }
 }

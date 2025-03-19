@@ -30,10 +30,9 @@ export class FeatDisplayComponent {
   };
   
   async handleScrapClick(){
-    this.apiService.getItems().subscribe({
-      next: (v) => console.log(v),
-      error: (e) => console.error(e),
-      complete: () => console.info('complete') 
-    });
+     await this.apiService.scrapFeats().then(async (response: any) => {
+        this.httpAccessService.writeFeats(response);
+        console.log(`${response.data} writen in file`);
+     }).catch((e) => console.error('Error fetching HTML:', e));
   }
 }
