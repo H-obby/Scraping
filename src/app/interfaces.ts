@@ -1,7 +1,7 @@
 export interface Feat {
     id?: any,
     nom: string,
-    type?: string,
+    type?: string[],
     courte_description: string,
     source?: string,
     condition?: string[],

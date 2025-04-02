@@ -20,17 +20,16 @@ export class ApiService {
     return this.http.post(`${this.baseUrl}/items`, item);
   }
 
-  async scrapFeats(): Promise<any> {
+  async scrapFeats(): Promise<Feat[]> {
     try {
-      const response = await lastValueFrom(this.http.get(`${this.baseUrl}/scrap-feats`));
-      return response;
+      return await lastValueFrom(this.http.get<Feat[]>(`${this.baseUrl}/scrap-feats`));
     } catch (error) {
       console.error('Error scraping feats:', error);
       throw error;
     }
   }
 
-  getFeats(){
-    return this.http.get(`${this.baseUrl}/get-feats`)
+  getFeats(): Observable<Feat[]>{
+    return this.http.get<Feat[]>(`${this.baseUrl}/get-feats`)
   }
 }

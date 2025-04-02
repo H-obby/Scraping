@@ -27,7 +27,12 @@ export class HttpAccessService {
     return (await data.json()) ?? [];
   }
 
-  writeFeats(data: Feat[]): Observable<Feat[]> {
-    return this.http.post<Feat[]>("http://localhost:3000/dons", data)
+  writeFeats(data: Feat[]) {
+    for (let i = 0; i < data.length; i++)
+      this.http.get<Feat[]>(`http://localhost:3000/dons?nom=${data[i].nom}`).subscribe(existingFeats => {
+        if (existingFeats.length === 0) {
+      this.http.post<Feat>("http://localhost:3000/dons", data[i]).subscribe();
+        }
+      });
   }
 }

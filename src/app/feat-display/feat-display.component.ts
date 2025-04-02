@@ -4,7 +4,6 @@ import { HttpAccessService } from "./../http-access.service";
 import { Subscription } from "rxjs";
 import { Feat } from '../interfaces';
 import { FeatSmallComponent } from '../feat-small/feat-small.component';
-import { FeatsScrap } from '../../scripts/feats-scrap';
 import { HttpClient } from '@angular/common/http';
 import { ApiService } from '../api.service';
 
@@ -15,11 +14,17 @@ import { ApiService } from '../api.service';
   styleUrl: './feat-display.component.css'
 })
 export class FeatDisplayComponent {
-  data: Feat[]
   constructor(private httpAccessService: HttpAccessService, private apiService:ApiService) {
     this.data = []
+    this.counter = 0
+    this.finalTime = 0
   };
+
+  data: Feat[] = []
   title = "feat_display";
+  loading = false;
+  counter: number;
+  finalTime: number
   
   async handleSearchClick() {
     try {
@@ -30,9 +35,19 @@ export class FeatDisplayComponent {
   };
   
   async handleScrapClick(){
-     await this.apiService.scrapFeats().then(async (response: any) => {
-        this.httpAccessService.writeFeats(response);
-        console.log(`${response.data} writen in file`);
-     }).catch((e) => console.error('Error fetching HTML:', e));
+    const startTime = Date.now()
+    this.loading = true;
+    setInterval(() => {
+      this.counter = Date.now() - startTime;
+    });
+    //console.log(`${await this.apiService.scrapFeats().then((result: Feat[])=>{})} writen in file`);
+    await this.apiService.scrapFeats().then(async (response: Feat[]) => {
+      this.loading = false;
+      this.finalTime = this.counter
+      this.httpAccessService.writeFeats(response);
+      console.log(`${JSON.stringify(response[-1])} writen in file`);
+    }).catch((e) => console.error('Error fetching HTML:', e));
+    this.loading = false;
+    this.finalTime = this.counter
   }
 }

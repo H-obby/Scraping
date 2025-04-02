@@ -1,7 +1,10 @@
-<main>
+<main class="search-container">
     <button class="scrap" type="button" (click)="handleScrapClick()">Scrap Feats</button>
-    <button class="search" type="button" (click)="handleSearchClick()">Search Feats</button>
-    <p *ngFor="let truc of data">
-        <app-feat-small [feat]="truc"></app-feat-small>
+    <button class="search search-button" type="button" (click)="handleSearchClick()">Search Feats</button>
+    <p *ngIf="loading">Loading stuff</p>
+    <p *ngIf="loading">{{counter}}</p>
+    <p *ngIf="!loading">{{finalTime}}</p>
+    <p class="results" *ngFor="let truc of data">
+        <app-feat-small class="result-item" [feat]="truc"></app-feat-small>
     </p>
   </main>
